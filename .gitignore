@@ -1,0 +1,9 @@
+node_modules/
+*.log
+bundle.js
+workspace.xml
+.DS_Store
+jsLibraryMappings.xml
+.idea
+misc.xml
+watcherTasks.xml
