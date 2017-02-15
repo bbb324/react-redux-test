@@ -3,7 +3,7 @@ export default function numberChange(state={
 }, action){
 	switch (action.type) {
 		case 'AUTOADD': {
-			return {...state, num: reactaction.payload}
+			return {...state, num: action.payload}
 			break;
 		}
 		case 'AUTODEL': {
