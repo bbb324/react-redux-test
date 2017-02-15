@@ -1,14 +1,13 @@
 export function autoAdd(num){
 	return {
 		type: 'AUTOADD',
-		payload: ++num
+		payload: (num + 1)
 	}
 }
 
 export function autoDel(num){
-	console.log('action, '+num);
 	return {
 		type: 'AUTODEL',
-		payload: --num
+		payload: (num - 1)
 	}
 }

@@ -9,6 +9,10 @@ import index from './js/reducer/index';
 
 const rootReducer = applyMiddleware(promise(), thunk, logger());
 
-
+if(module.hot) {
+	module.hot.accept('./js/reducer/', ()=>{
+		const nextRootReducer = require('./js/reducer/index').default;
+	})
+}
 
 export default createStore(index, rootReducer)

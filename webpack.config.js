@@ -1,4 +1,4 @@
-var debug = process.env.NODE_ENV !== "production";
+
 var webpack = require('webpack');
 var path = require('path');
 
@@ -6,8 +6,9 @@ var path = require('path');
 
 module.exports = {
   context: path.join(__dirname, "src"),
-  devtool: debug ? "inline-sourcemap" : null,
+  devtool: 'cheap-module-eval-source-map',
   entry: [
+   'webpack-hot-middleware/client', // WebpackDevServer host and port
   "./client.js",
   ],
   module: {
@@ -15,11 +16,20 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-        }
+        
+        loaders: ['react-hot', 'babel?' +JSON.stringify({
+          plugins: [
+            'transform-decorators-legacy',
+            'react-html-attrs',
+            'transform-class-properties'
+          ],
+          presets: ['es2015', 'react', 'stage-0'],
+          env: {
+            production: {
+              presets: ['react-optimize']
+            }
+          }
+        })],
       }
     ]
   },
@@ -27,9 +37,10 @@ module.exports = {
     path: __dirname + "/src/",
     filename: "client.min.js"
   },
-  plugins: debug ? [] : [
+  plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+    new webpack.HotModuleReplacementPlugin()
   ],
 };

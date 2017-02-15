@@ -7,8 +7,8 @@ import Timer from './js/components/Timer.react';
 import store from './store';
 
 const app = document.getElementById('app');
-console.log(<Layout />);
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Timer />
-	</Provider>, app)
+	</Provider>, document.getElementById('app'))
