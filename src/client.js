@@ -12,3 +12,8 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Timer />
 	</Provider>, document.getElementById('app'))
+
+console.log(module.hot)
+if(module.hot){
+	console.log('should hot reload!!!');
+}

@@ -17,7 +17,7 @@ export default class Layout extends React.Component{
 	renderUserList(){
 		let list = [];
 		if(this.props.fetchStatus == null){
-			return <div>13</div>
+			return <div>134</div>
 		}
 		if (this.props.fetchStatus == 'pending'){
 			return <div>pending...</div>

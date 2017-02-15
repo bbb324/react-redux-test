@@ -1,7 +1,7 @@
 export function autoAdd(num){
 	return {
 		type: 'AUTOADD',
-		payload: (num + 2)
+		payload: (num + 1)
 	}
 }
 
