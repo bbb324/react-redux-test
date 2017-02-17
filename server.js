@@ -9,8 +9,6 @@ var compiler = webpack(config);
 
 const port = 3000;
 
-app.use(handlerRender);
-
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath,
 }));
