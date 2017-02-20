@@ -42,7 +42,12 @@
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   },
- 
+ "scripts": {
+    "start": "node server.js",
+    "build": "webpack -p --progress",
+    "start": "babel-node server.js",
+    "transpile-es2015": "babel src -d lib"
+   },
   "author": "",
   "license": "ISC"
 }

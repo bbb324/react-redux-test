@@ -2,7 +2,7 @@
 var webpack = require('webpack');
 var path = require('path');
 
-
+console.log(__dirname);
 
 module.exports = {
   context: path.join(__dirname, "src"),
@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/src/",
+    path: __dirname + "/src",
     filename: "client.min.js"
   },
   plugins: [
