@@ -1,14 +1,11 @@
 
 var webpack = require('webpack');
 var path = require('path');
-
-console.log(__dirname);
-
 module.exports = {
   context: path.join(__dirname, "src"),
   devtool: 'cheap-module-eval-source-map',
   entry: [
-   'webpack-hot-middleware/client', // WebpackDevServer host and port
+   'webpack-hot-middleware/client?http://localhost:3000', // WebpackDevServer host and port
   "./client.js",
   ],
   module: {
@@ -16,7 +13,6 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        
         loaders: ['react-hot', 'babel?' +JSON.stringify({
           plugins: [
             'transform-decorators-legacy',
@@ -35,12 +31,14 @@ module.exports = {
   },
   output: {
     path: __dirname + "/src",
-    filename: "client.min.js"
+    filename: "client.min.js",
+    publicPath: '/'
   },
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
     new webpack.HotModuleReplacementPlugin()
+
   ],
 };

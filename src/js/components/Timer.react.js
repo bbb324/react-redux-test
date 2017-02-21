@@ -13,8 +13,8 @@ export default class Timer extends React.Component{
 	componentWillMount(){
 		let self = this;
 		setInterval(function(){
-			//self.props.dispatch(autoAdd(self.props.num));
 			self.props.dispatch(autoAdd(self.props.num));
+			//self.props.dispatch(autoDel(self.props.num));
 		}, 1000)
 	}
 
@@ -22,7 +22,6 @@ export default class Timer extends React.Component{
 		return (<div>
 			<span>{this.props.num}</span>
 			<Layout />
-			<DragBlock />
 		</div>);
 	};
 }
